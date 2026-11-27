@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toplantı Bekleme Odası &amp; YABAN &amp; DOĞA</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Cormorant Garamond (Tam Türkçe Karakter Desteği) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #06110d;
+            --bg-emerald: #0b1d16;
+            --accent-gold: #e5b869;
+            --accent-mint: #52b788;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-serif-display {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+
+        /* Özel Kaydırma Çubuğu */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06110d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1b4332;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2d6a4f;
+        }
+
+        /* Bekleme Odası Animasyonları */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.55; transform: scale(1.18); }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 2.2s infinite ease-in-out;
+        }
+
+        @keyframes steam-rise {
+            0% { transform: translateY(0) scaleX(1); opacity: 0; }
+            40% { opacity: 0.65; }
+            100% { transform: translateY(-24px) scaleX(1.3); opacity: 0; }
+        }
+        .steam-1 { animation: steam-rise 3.1s infinite ease-in-out; }
+        .steam-2 { animation: steam-rise 3.7s infinite ease-in-out 1.0s; }
+        .steam-3 { animation: steam-rise 3.4s infinite ease-in-out 2.0s; }
+
+        @keyframes sunbeam-shimmer {
+            0%, 100% { opacity: 0.16; }
+            50% { opacity: 0.28; }
+        }
+        .animate-lounge-light {
+            animation: sunbeam-shimmer 6s infinite ease-in-out;
+        }
+
+        @keyframes join-glow {
+            0%, 100% { box-shadow: 0 0 22px rgba(16, 185, 129, 0.45), 0 10px 25px -5px rgba(5, 150, 105, 0.5); }
+            50% { box-shadow: 0 0 36px rgba(52, 211, 153, 0.78), 0 14px 32px -4px rgba(5, 150, 105, 0.7); }
+        }
+        .btn-join-glow {
+            animation: join-glow 2.2s infinite ease-in-out;
+        }
+
+        /* Yaban & Doğa Atmosfer Animasyonları */
+        @keyframes mistDriftSlow {
+            0%, 100% { transform: translateX(-2%) scaleX(1.04); opacity: 0.45; }
+            50% { transform: translateX(2%) scaleX(1.08); opacity: 0.7; }
+        }
+        @keyframes mistDriftReverse {
+            0%, 100% { transform: translateX(2.5%) scaleX(1.05); opacity: 0.35; }
+            50% { transform: translateX(-2.5%) scaleX(1.02); opacity: 0.6; }
+        }
+        @keyframes auroraWave {
+            0%, 100% { transform: translateY(0px) skewX(-3deg); opacity: 0.65; }
+            50% { transform: translateY(-8px) skewX(3deg); opacity: 0.95; }
+        }
+        @keyframes sunRayPulse {
+            0%, 100% { opacity: 0.28; }
+            50% { opacity: 0.48; }
+        }
+
+        .animate-mist-1 { animation: mistDriftSlow 16s infinite ease-in-out; }
+        .animate-mist-2 { animation: mistDriftReverse 21s infinite ease-in-out; }
+        .animate-aurora { animation: auroraWave 9s infinite ease-in-out; }
+        .animate-sunrays { animation: sunRayPulse 7s infinite ease-in-out; }
+
+        /* Atmosferik Cam Panel & Kart Efektleri */
+        .glass-panel {
+            background: rgba(11, 29, 22, 0.66);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(229, 184, 105, 0.18);
+        }
+
+        .glass-card {
+            background: linear-gradient(165deg, rgba(16, 40, 31, 0.86) 0%, rgba(7, 19, 14, 0.95) 100%);
+            border: 1px solid rgba(116, 198, 157, 0.16);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(229, 184, 105, 0.48);
+            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.65), 0 0 30px rgba(82, 183, 136, 0.12);
+        }
+
+        /* Günün Saati Sahnesi Yumuşak Geçişleri */
+        #heroSceneSvg * {
+            transition: fill 1.1s ease, stop-color 1.1s ease, opacity 1.1s ease, transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Ses Ekolayzır Çubukları */
+        @keyframes eqBar {
+            0%, 100% { height: 4px; }
+            50% { height: 14px; }
+        }
+        .audio-active .eq-1 { animation: eqBar 0.9s infinite ease-in-out; }
+        .audio-active .eq-2 { animation: eqBar 0.7s infinite ease-in-out 0.2s; }
+        .audio-active .eq-3 { animation: eqBar 1.1s infinite ease-in-out 0.35s; }
+
+        /* Ekran Geçiş Efekti */
+        .view-fade-enter {
+            animation: viewFadeIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        @keyframes viewFadeIn {
+            from { opacity: 0; transform: scale(0.99); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-[#f1f5f9] text-slate-800 antialiased selection:bg-amber-400/25 selection:text-amber-900">
+
+    <!-- =====================================================================
+         1. EKRAN: TOPLANTI BEKLEME ODASI (BAŞLANGIÇ GÖRÜNÜMÜ)
+         ===================================================================== -->
+    <div id="waitingRoomView" class="min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-8 bg-[radial-gradient(circle_at_top,_#fdfbf7_0%,_#e2e8f0_100%)] transition-opacity duration-500">
+        <main class="w-full max-w-5xl mx-auto flex flex-col items-center text-center space-y-5 sm:space-y-6">
+            
+            <!-- Üst Durum Rozeti -->
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/95 border border-amber-200/80 shadow-sm backdrop-blur-sm">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+                </span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-700">Toplantı Bekleme Odası</span>
+                <span class="h-4 w-px bg-slate-200"></span>
+                <span id="badgeTimer" class="text-xs sm:text-sm font-bold text-amber-700 tabular-nums">00:15</span>
+            </div>
+
+            <!-- Bekleme Salonu Ana Kartı -->
+            <section class="w-full bg-white p-2.5 sm:p-4 rounded-3xl shadow-2xl shadow-slate-300/70 border border-slate-200/90">
+                <div class="relative overflow-hidden rounded-2xl bg-slate-900 min-h-[450px] sm:min-h-[520px] md:aspect-video flex flex-col justify-between">
+                    
+                    <!-- Yüksek Detaylı Mimari Bekleme Salonu SVG İllüstrasyonu -->
+                    <div class="absolute inset-0 w-full h-full select-none pointer-events-none">
+                        <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <!-- Gün Işığı Şehir Gökyüzü -->
+                                <linearGradient id="loungeSky" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#bae6fd"/>
+                                    <stop offset="52%" stop-color="#e0f2fe"/>
+                                    <stop offset="100%" stop-color="#fef3c7"/>
+                                </linearGradient>
+                                <!-- Sıcak İç Mekan Duvarı -->
+                                <linearGradient id="loungeWall" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#efeae1"/>
+                                    <stop offset="100%" stop-color="#dcd4c6"/>
+                                </linearGradient>
+                                <!-- Meşe Parke Zemin -->
+                                <linearGradient id="loungeFloor" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#c2a88c"/>
+                                    <stop offset="100%" stop-color="#8f7559"/>
+                                </linearGradient>
+                                <!-- Espresso Tezgahı Ahşap & Mermer -->
+                                <linearGradient id="espressoWood" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#3a2f28"/>
+                                    <stop offset="50%" stop-color="#4e3f36"/>
+                                    <stop offset="100%" stop-color="#2b221d"/>
+                                </linearGradient>
+                                <!-- Pencereden Süzülen Güneş Huzmesi -->
+                                <linearGradient id="windowSunbeam" x1="100%" y1="0%" x2="20%" y2="100%">
+                                    <stop offset="0%" stop-color="#fef9c3" stop-opacity="0.7"/>
+                                    <stop offset="100%" stop-color="#fef9c3" stop-opacity="0"/>
+                                </linearGradient>
+                                <!-- Metin Okunabilirliği İçin Hafif Üst/Alt Perde -->
+                                <linearGradient id="loungeReadability" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+                                    <stop offset="50%" stop-color="#ffffff" stop-opacity="0.22"/>
+                                    <stop offset="100%" stop-color="#0f172a" stop-opacity="0.32"/>
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Arka Duvar & Zemin -->
+                            <rect width="1280" height="505" fill="url(#loungeWall)"/>
+                            <polygon points="0,495 1280,495 1280,720 0,720" fill="url(#loungeFloor)"/>
+                            <!-- Tavan Gömme LED Işık Havuzu -->
+                            <polygon points="160,0 1120,0 1040,42 240,42" fill="#f8f4ec"/>
+                            <rect x="280" y="31" width="720" height="8" rx="4" fill="#fde68a" opacity="0.95"/>
+
+                            <!-- Panoramik Tabandan Tavana Pencereler & Güneşli Şehir Silüeti -->
+                            <g>
+                                <rect x="740" y="42" width="540" height="460" fill="url(#loungeSky)"/>
+                                <!-- Sıcak Güneş Parıltısı -->
+                                <circle cx="1165" cy="125" r="54" fill="#fef08a" opacity="0.85"/>
+                                <!-- Uzak Gökdelenler -->
+                                <rect x="775" y="195" width="46" height="305" fill="#94a3b8" opacity="0.5"/>
+                                <rect x="835" y="150" width="60" height="350" fill="#64748b" opacity="0.45"/>
+                                <rect x="910" y="220" width="52" height="280" fill="#94a3b8" opacity="0.55"/>
+                                <rect x="978" y="130" width="68" height="370" fill="#475569" opacity="0.42"/>
+                                <rect x="1062" y="185" width="56" height="315" fill="#94a3b8" opacity="0.5"/>
+                                <rect x="1135" y="145" width="74" height="355" fill="#64748b" opacity="0.48"/>
+                                <rect x="1220" y="205" width="48" height="295" fill="#94a3b8" opacity="0.55"/>
+                                <!-- Boğaz / Su Yansıması -->
+                                <rect x="740" y="438" width="540" height="62" fill="#7dd3fc" opacity="0.6"/>
+                                <!-- Alüminyum Pencere Doğramaları -->
+                                <rect x="734" y="42" width="14" height="462" fill="#334155"/>
+                                <rect x="912" y="42" width="12" height="462" fill="#334155"/>
+                                <rect x="1092" y="42" width="12" height="462" fill="#334155"/>
+                                <rect x="1268" y="42" width="12" height="462" fill="#334155"/>
+                                <rect x="734" y="492" width="546" height="14" fill="#334155"/>
+                            </g>
+
+                            <!-- Pencereden İçeri Vuran Sıcak Güneş Işını -->
+                            <polygon points="1260,45 750,45 480,680 1180,680" fill="url(#windowSunbeam)" class="animate-lounge-light"/>
+
+                            <!-- Sol Duvar Karşılama Ekranı -->
+                            <g transform="translate(145, 105)">
+                                <rect x="0" y="0" width="220" height="122" rx="10" fill="#1e293b"/>
+                                <rect x="8" y="8" width="204" height="106" rx="6" fill="#f0f9ff"/>
+                                <text x="110" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">HOŞ GELDİNİZ</text>
+                                <text x="110" y="64" text-anchor="middle" font-size="10" font-weight="500" fill="#475569">YÖNETİCİ BEKLEME SALONU</text>
+                                <rect x="52" y="78" width="116" height="18" rx="9" fill="#d97706"/>
+                                <text x="110" y="90" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">TAZE KAHVE &amp; İKRAM</text>
+                            </g>
+
+                            <!-- Sol Köşe Tropik Salon Bitkisi -->
+                            <g transform="translate(55, 275)">
+                                <ellipse cx="48" cy="195" rx="34" ry="12" fill="#475569"/>
+                                <path d="M24,195 L72,195 L65,248 L31,248 Z" fill="#334155"/>
+                                <path d="M48,195 C20,150 4,115 18,76 C34,110 44,148 48,195 Z" fill="#2d6a4f"/>
+                                <path d="M48,195 C42,132 45,82 58,56 C66,94 58,142 48,195 Z" fill="#40916c"/>
+                                <path d="M48,195 C74,150 96,115 84,82 C68,110 55,148 48,195 Z" fill="#1b4332"/>
+                            </g>
+
+                            <!-- Arka Duvar İkram Büfesi -->
+                            <g transform="translate(145, 332)">
+                                <rect x="0" y="34" width="320" height="132" rx="6" fill="#443b34"/>
+                                <rect x="-6" y="26" width="332" height="12" rx="4" fill="#f8fafc"/>
+                                <!-- Filtre Kahve Ünitesi -->
+                                <rect x="24" y="-24" width="74" height="50" rx="6" fill="#1e293b"/>
+                                <rect x="34" y="-14" width="54" height="20" rx="3" fill="#38bdf8" opacity="0.35"/>
+                                <!-- Katlı Pasta & Kruvasan Standı -->
+                                <ellipse cx="160" cy="10" rx="36" ry="8" fill="#d97706"/>
+                                <ellipse cx="160" cy="-6" rx="26" ry="6" fill="#f59e0b"/>
+                                <rect x="157" y="-6" width="6" height="32" fill="#94a3b8"/>
+                            </g>
+
+                            <!-- Arka Planda Sohbet Eden Beyaz Yakalı Çalışanlar -->
+                            <!-- Kadın Çalışan (Kahve Sürahisiyle) -->
+                            <g transform="translate(425, 240)">
+                                <circle cx="45" cy="36" r="22" fill="#eab696"/>
+                                <path d="M22,34 C22,12 68,12 68,34 L73,76 L17,76 Z" fill="#1e1b18"/>
+                                <path d="M16,72 C16,58 74,58 74,72 L82,160 L8,160 Z" fill="#d6c5b3"/>
+                                <path d="M36,64 L54,64 L45,108 Z" fill="#ffffff"/>
+                                <rect x="22" y="160" width="46" height="135" fill="#334155"/>
+                            </g>
+
+                            <!-- Pencere Önünde Sohbet Eden İki Profesyonel -->
+                            <g transform="translate(945, 232)">
+                                <circle cx="38" cy="34" r="20" fill="#e0a988"/>
+                                <path d="M18,28 C18,10 58,10 58,28 Z" fill="#1e293b"/>
+                                <path d="M10,66 C10,52 66,52 66,66 L72,175 L4,175 Z" fill="#475569"/>
+                                <rect x="16" y="175" width="44" height="145" fill="#1e293b"/>
+                            </g>
+                            <g transform="translate(1035, 245)">
+                                <circle cx="36" cy="32" r="19" fill="#eab696"/>
+                                <path d="M16,30 C16,10 56,10 56,30 L60,68 L12,68 Z" fill="#3f2e21"/>
+                                <path d="M10,64 C10,50 62,50 62,64 L68,168 L4,168 Z" fill="#cbd5e1"/>
+                                <rect x="16" y="168" width="40" height="140" fill="#334155"/>
+                            </g>
+
+                            <!-- Ön Planda Kahve İçen Beyaz Yakalı Yönetici -->
+                            <g transform="translate(765, 205)">
+                                <!-- Lacivert Blazer Ceket -->
+                                <path d="M22,92 C22,72 118,72 118,92 L134,280 L6,280 Z" fill="#1e3a5f"/>
+                                <!-- Beyaz Gömlek -->
+                                <polygon points="54,78 86,78 76,188 64,188" fill="#ffffff"/>
+                                <!-- Baş & Saç -->
+                                <circle cx="70" cy="44" r="28" fill="#eab696"/>
+                                <path d="M42,38 C42,10 98,10 98,38 C98,24 42,24 42,38 Z" fill="#1e293b"/>
+                                <!-- Kahve Kupası & Buhar Animasyonu -->
+                                <g transform="translate(24, 134)">
+                                    <rect x="0" y="0" width="28" height="34" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+                                    <path d="M28,7 C36,7 36,25 28,25" fill="none" stroke="#ffffff" stroke-width="3"/>
+                                    <path d="M8,-6 Q4,-16 10,-24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" class="steam-1"/>
+                                    <path d="M18,-6 Q22,-16 16,-24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" class="steam-2"/>
+                                </g>
+                                <!-- Deri Toplantı Defteri -->
+                                <rect x="104" y="182" width="32" height="44" rx="4" fill="#7c2d12"/>
+                            </g>
+
+                            <!-- Ön Plan Modern Espresso Barı, Fincanlar & Kruvasanlar -->
+                            <g transform="translate(450, 445)">
+                                <polygon points="0,35 660,35 710,275 -35,275" fill="url(#espressoWood)"/>
+                                <polygon points="-14,24 674,24 684,42 -24,42" fill="#f8fafc"/>
+                                <!-- Profesyonel Espresso Makinesi -->
+                                <rect x="52" y="-78" width="170" height="102" rx="10" fill="#1e293b"/>
+                                <rect x="68" y="-62" width="138" height="36" rx="4" fill="#cbd5e1"/>
+                                <rect x="85" y="-14" width="104" height="24" rx="3" fill="#94a3b8"/>
+                                <!-- Kahve Fincanı & Yükselen Buhar -->
+                                <rect x="126" y="-2" width="22" height="24" rx="4" fill="#ffffff"/>
+                                <path d="M137,-8 Q133,-18 139,-26" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" class="steam-3"/>
+                                <!-- Fincan & Kruvasan Sunum Tepsisi -->
+                                <rect x="255" y="-6" width="155" height="30" rx="5" fill="#78350f"/>
+                                <rect x="272" y="-22" width="22" height="18" rx="3" fill="#ffffff"/>
+                                <rect x="305" y="-22" width="22" height="18" rx="3" fill="#ffffff"/>
+                                <ellipse cx="366" cy="-12" rx="22" ry="10" fill="#d97706"/>
+                                <!-- Limonlu Detoks Su Sürahileri -->
+                                <rect x="535" y="-44" width="32" height="68" rx="8" fill="#e0f2fe" opacity="0.88"/>
+                                <rect x="580" y="-44" width="32" height="68" rx="8" fill="#e0f2fe" opacity="0.88"/>
+                            </g>
+
+                            <!-- Sol Ön Modern Lounge Koltukları & Kahvesini Yudumlayan Çalışan -->
+                            <g transform="translate(28, 340)">
+                                <circle cx="54" cy="34" r="22" fill="#e5ae8c"/>
+                                <path d="M32,30 C32,10 76,10 76,30 Z" fill="#1e293b"/>
+                                <path d="M18,68 C18,54 90,54 90,68 L98,185 L10,185 Z" fill="#cbd5e1"/>
+                                <!-- Sıcak Kahve Kupası -->
+                                <rect x="62" y="108" width="20" height="24" rx="4" fill="#ffffff"/>
+                                <!-- Sıcak Kahverengi Lounge Koltuk -->
+                                <path d="M-4,132 C-4,110 124,110 124,132 L134,380 L-14,380 Z" fill="#78716c"/>
+                            </g>
+
+                            <!-- Metin Okunabilirliği İçin Dengeli Işık/Gölge Perdesi -->
+                            <rect width="1280" height="720" fill="url(#loungeReadability)"/>
+                        </svg>
+                    </div>
+
+                    <!-- Ortalanmış Cam (Glassmorphic) Karşılama & Geri Sayım Kartı -->
+                    <div class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-10 pt-8 pb-6 text-center">
+                        <div id="waitingCard" class="max-w-3xl mx-auto bg-white/85 backdrop-blur-md border border-white shadow-2xl rounded-3xl px-6 py-7 sm:px-10 sm:py-9 space-y-5 transition-all duration-500">
+                            
+                            <!-- Kahve Fincanı İkonu -->
+                            <div id="coffeeBadgeIcon" class="mx-auto w-13 h-13 p-3 rounded-2xl bg-amber-100 text-amber-800 inline-flex items-center justify-center shadow-sm transition-all duration-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+                                    <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
+                                    <line x1="6" y1="2" x2="6" y2="4"/>
+                                    <line x1="10" y1="2" x2="10" y2="4"/>
+                                    <line x1="14" y1="2" x2="14" y2="4"/>
+                                </svg>
+                            </div>
+
+                            <!-- Karşılama Başlığı -->
+                            <h1 id="mainTitle" class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-slate-900 leading-snug">
+                                Çevrimiçi toplantınız 5dk içinde başlayacaktır, lütfen kendinize bir kahve alın ve keyfinize bakın
+                            </h1>
+
+                            <!-- Canlı 15 Saniyelik Geri Sayım Sayacı -->
+                            <div id="timerBox" class="inline-flex flex-col items-center justify-center px-7 py-3 rounded-2xl bg-slate-900/95 text-white shadow-lg transition-all duration-500">
+                                <span class="text-[11px] uppercase tracking-widest text-amber-300 font-semibold">Kalan Süre</span>
+                                <span id="countdown" class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight tabular-nums text-white mt-0.5">
+                                    00:15
+                                </span>
+                            </div>
+
+                            <p id="subTitle" class="text-xs sm:text-sm text-slate-600 font-medium">
+                                Toplantı odası hazırlanıyor. Süre tamamlandığında oturuma giriş aktifleşecektir.
+                            </p>
+
+                            <!-- Süre Dolduğunda Açılan Parlayan "Toplantıya Katıl" Butonu -->
+                            <div id="joinAction" class="hidden pt-1">
+                                <button type="button" id="joinBtn" class="btn-join-glow inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 active:scale-[0.98] text-white font-bold text-base sm:text-lg transition-all cursor-pointer">
+                                    <span>Toplantıya Katıl</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Alt Durum Çubuğu -->
+                    <div class="relative z-10 m-3 sm:m-4 flex flex-wrap items-center justify-between gap-2 px-4 py-3 rounded-xl bg-slate-900/80 backdrop-blur-md text-white text-xs sm:text-sm border border-white/10">
+                        <div class="flex items-center gap-2.5">
+                            <span id="statusDot" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse-soft"></span>
+                            <span class="font-medium">Bekleme Salonu • Ses ve Görüntü Bağlantısı Hazır</span>
+                        </div>
+                        <button id="resetBtn" type="button" class="text-amber-300 hover:text-amber-200 font-semibold underline underline-offset-4 transition-colors cursor-pointer">
+                            Sayacı Sıfırla
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+    <!-- =====================================================================
+         2. EKRAN: YABAN & DOĞA WEB SİTESİ (TOPLANTIYA KATILINCA AÇILIR)
+         ===================================================================== -->
+    <div id="natureSiteView" class="hidden min-h-screen w-full bg-[#06110d] text-[#e8efe9] selection:bg-amber-400/25 selection:text-amber-200">
+        
+        <!-- Sabit Cam Gezinme Çubuğu -->
+        <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-500 py-3 sm:py-4 px-3 sm:px-8">
+            <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 rounded-2xl px-4 sm:px-6 py-3 glass-panel shadow-xl" id="navInner">
+                <!-- Marka Logosu -->
+                <a href="#hero" class="flex items-center gap-3 group focus:outline-none">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/25 to-amber-500/20 border border-amber-300/30 flex items-center justify-center shadow-inner group-hover:border-amber-300/60 transition-colors">
+                        <svg class="w-5 h-5 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L4 14h6l-3 8h10l-3-8h6L12 2z"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <span class="font-serif-display text-lg sm:text-xl font-bold tracking-[0.18em] text-amber-100 leading-none">YABAN &amp; DOĞA</span>
+                        <span class="text-[10px] tracking-[0.25em] uppercase text-emerald-300/80 mt-1">Vahşi Yaşam Atlası</span>
+                    </div>
+                </a>
+
+                <!-- Masaüstü Bölüm Bağlantıları -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-emerald-100/85">
+                    <a href="#atmosfer" class="hover:text-amber-300 transition-colors">Atmosfer</a>
+                    <a href="#ekosistemler" class="hover:text-amber-300 transition-colors">Ekosistemler</a>
+                    <a href="#galeri" class="hover:text-amber-300 transition-colors">Galeri</a>
+                    <a href="#manifesto" class="hover:text-amber-300 transition-colors">Keşfet</a>
+                </nav>
+
+                <!-- Sağ Kontroller: Ortam Sesi Sentezi + Bekleme Odasına Dön -->
+                <div class="flex items-center gap-2 sm:gap-2.5">
+                    <button id="audioToggleBtn" type="button" aria-label="Orman ortam sesini aç veya kapat" class="flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 border border-amber-300/25 hover:border-amber-300/55 text-xs font-medium text-amber-100 transition-all cursor-pointer shadow-md">
+                        <span id="audioEq" class="flex items-end gap-0.5 h-3.5 w-3.5 justify-center">
+                            <span class="eq-1 w-0.5 h-1.5 bg-amber-300 rounded-full"></span>
+                            <span class="eq-2 w-0.5 h-2.5 bg-emerald-400 rounded-full"></span>
+                            <span class="eq-3 w-0.5 h-1.5 bg-amber-300 rounded-full"></span>
+                        </span>
+                        <span id="audioLabel" class="hidden sm:inline">Ortam Sesi</span>
+                    </button>
+
+                    <button id="backToWaitingBtn" type="button" class="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl bg-amber-400/15 hover:bg-amber-400/25 border border-amber-300/35 text-xs font-semibold text-amber-200 transition-all cursor-pointer">
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg>
+                        <span>Bekleme Odasına Dön</span>
+                    </button>
+
+                    <button id="mobileMenuBtn" type="button" aria-label="Menüyü aç" class="lg:hidden p-2 rounded-xl bg-emerald-950/80 border border-emerald-700/40 text-emerald-100 hover:text-amber-300 cursor-pointer">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobil Açılır Menü -->
+            <div id="mobileMenu" class="hidden lg:hidden max-w-7xl mx-auto mt-2 rounded-2xl glass-panel p-4 flex flex-col gap-2.5 text-sm font-medium text-emerald-100">
+                <a href="#atmosfer" class="px-3 py-2 rounded-xl hover:bg-emerald-900/50 hover:text-amber-300 transition-colors mobile-nav-link">Atmosfer</a>
+                <a href="#ekosistemler" class="px-3 py-2 rounded-xl hover:bg-emerald-900/50 hover:text-amber-300 transition-colors mobile-nav-link">Ekosistemler</a>
+                <a href="#galeri" class="px-3 py-2 rounded-xl hover:bg-emerald-900/50 hover:text-amber-300 transition-colors mobile-nav-link">Galeri</a>
+                <a href="#manifesto" class="px-3 py-2 rounded-xl hover:bg-emerald-900/50 hover:text-amber-300 transition-colors mobile-nav-link">Keşfet</a>
+            </div>
+        </header>
+
+        <!-- TAM EKRAN KAHRAMAN (HERO) & İNTERAKTİF GÜNÜN SAATİ SAHNESİ -->
+        <section id="hero" class="relative min-h-screen w-full flex flex-col justify-between overflow-hidden pt-24 pb-10">
+            <!-- Çok Katmanlı Dinamik Dağ, Çam Ormanı, Şelale ve Göl Yansıması Sahnesi -->
+            <div class="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
+                <svg id="heroSceneSvg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="heroDynSky" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop id="hSky1" offset="0%" stop-color="#040d0a"/>
+                            <stop id="hSky2" offset="42%" stop-color="#1b4332"/>
+                            <stop id="hSky3" offset="100%" stop-color="#c98a4b"/>
+                        </linearGradient>
+                        <linearGradient id="heroDynLake" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop id="hLake1" offset="0%" stop-color="#12382b"/>
+                            <stop id="hLake2" offset="100%" stop-color="#05140e"/>
+                        </linearGradient>
+                        <linearGradient id="heroSunRay" x1="50%" y1="70%" x2="50%" y2="0%">
+                            <stop offset="0%" stop-color="#fef3c7" stop-opacity="0.38"/>
+                            <stop offset="100%" stop-color="#fef3c7" stop-opacity="0"/>
+                        </linearGradient>
+                        <linearGradient id="heroWaterfallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.88"/>
+                            <stop offset="100%" stop-color="#a7f3d0" stop-opacity="0.45"/>
+                        </linearGradient>
+                        <linearGradient id="mistBand" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#d8f3dc" stop-opacity="0"/>
+                            <stop offset="50%" stop-color="#b7e4c7" stop-opacity="0.3"/>
+                            <stop offset="100%" stop-color="#081c15" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Dinamik Gökyüzü -->
+                    <rect width="1600" height="900" fill="url(#heroDynSky)"/>
+
+                    <!-- Yıldızlar -->
+                    <g id="hStars" fill="#ffffff" opacity="0.35">
+                        <circle cx="190" cy="110" r="1.5"/><circle cx="340" cy="75" r="1.2"/>
+                        <circle cx="480" cy="145" r="1.7"/><circle cx="660" cy="65" r="1.3"/>
+                        <circle cx="930" cy="88" r="1.6"/><circle cx="1120" cy="130" r="1.2"/>
+                        <circle cx="1290" cy="72" r="1.8"/><circle cx="1440" cy="140" r="1.3"/>
+                        <circle cx="260" cy="210" r="1.1"/><circle cx="1360" cy="220" r="1.2"/>
+                    </g>
+
+                    <!-- Güneş / Ay Gök Cismi -->
+                    <g id="hCelestial" transform="translate(800, 540)">
+                        <circle id="hHalo" cx="0" cy="0" r="135" fill="#fde68a" opacity="0.32"/>
+                        <circle id="hDisc" cx="0" cy="0" r="56" fill="#fef3c7"/>
+                    </g>
+
+                    <!-- Işık Huzmeleri -->
+                    <g id="hRays" class="animate-sunrays" fill="url(#heroSunRay)">
+                        <polygon points="800,540 430,110 570,110"/>
+                        <polygon points="800,540 680,75 760,75"/>
+                        <polygon points="800,540 845,75 925,75"/>
+                        <polygon points="800,540 1030,120 1170,120"/>
+                    </g>
+
+                    <!-- Uzak Dağ Sıradağları -->
+                    <path id="hFarMount" d="M0,585 L140,465 L290,525 L470,400 L650,510 L800,430 L970,505 L1160,390 L1340,490 L1490,435 L1600,505 L1600,900 L0,900 Z" fill="#183a2d"/>
+
+                    <!-- Vadi Sisi 1 -->
+                    <ellipse id="hMist1" cx="800" cy="570" rx="920" ry="70" fill="url(#mistBand)" class="animate-mist-1"/>
+
+                    <!-- Orta Kayalık Dağlar ve Uzak Şelale -->
+                    <path id="hMidMount" d="M0,640 L190,515 L360,600 L560,480 L740,590 L895,500 L1095,595 L1285,475 L1460,570 L1600,520 L1600,900 L0,900 Z" fill="#102920"/>
+                    <!-- Kayalıktan Göl'e Dökülen İnce Şelale -->
+                    <rect x="888" y="512" width="16" height="175" rx="4" fill="url(#heroWaterfallGrad)" opacity="0.82"/>
+                    <ellipse cx="896" cy="686" rx="34" ry="8" fill="#e0f2fe" opacity="0.5"/>
+
+                    <!-- Vadi Sisi 2 -->
+                    <ellipse id="hMist2" cx="780" cy="645" rx="950" ry="60" fill="url(#mistBand)" class="animate-mist-2"/>
+
+                    <!-- Sakin Dağ Gölü -->
+                    <path d="M260,685 Q800,665 1340,685 L1480,835 L120,835 Z" fill="url(#heroDynLake)"/>
+                    <!-- Göl Üzerindeki Güneş/Ay Yansıması -->
+                    <ellipse id="hWaterRefl" cx="800" cy="730" rx="185" ry="18" fill="#fde68a" opacity="0.38"/>
+                    <ellipse cx="800" cy="755" rx="115" ry="9" fill="#ffffff" opacity="0.16"/>
+
+                    <!-- Ön Plan Kadim Çam Ormanı Silüetleri -->
+                    <g id="hTrees" fill="#050e0a">
+                        <polygon points="45,900 95,555 145,900"/>
+                        <polygon points="60,720 95,515 130,720"/>
+                        <polygon points="72,610 95,480 118,610"/>
+                        <polygon points="125,900 185,595 245,900"/>
+                        <polygon points="145,740 185,550 225,740"/>
+                        <polygon points="220,900 265,645 310,900"/>
+                        <polygon points="300,900 335,695 370,900"/>
+
+                        <polygon points="1455,900 1505,540 1555,900"/>
+                        <polygon points="1470,710 1505,500 1540,710"/>
+                        <polygon points="1482,600 1505,465 1528,600"/>
+                        <polygon points="1355,900 1415,585 1475,900"/>
+                        <polygon points="1375,735 1415,540 1455,735"/>
+                        <polygon points="1275,900 1320,635 1365,900"/>
+                        <polygon points="1215,900 1248,690 1280,900"/>
+
+                        <path d="M0,785 Q420,750 800,795 Q1180,755 1600,785 L1600,900 L0,900 Z"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Canlı HTML5 Canvas Ateş Böcekleri & Altın Işık Tozları -->
+            <canvas id="heroCanvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></canvas>
+
+            <!-- Alt Geçiş Gradyanı -->
+            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#06110d] via-[#06110d]/80 to-transparent z-10 pointer-events-none"></div>
+
+            <!-- Kahraman Metni -->
+            <div class="relative z-20 flex-1 flex flex-col items-center justify-center max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-6 my-auto">
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel text-amber-200/95 text-xs sm:text-sm tracking-widest uppercase shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                    <span>Yeryüzünün Saklı Ruhu</span>
+                </div>
+
+                <h1 class="font-serif-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-white tracking-tight leading-[1.06] drop-shadow-[0_6px_28px_rgba(0,0,0,0.65)]">
+                    Doğanın Kalbine <span class="italic text-amber-300 font-normal">Yolculuk</span>
+                </h1>
+
+                <p class="max-w-2xl mx-auto text-sm sm:text-lg md:text-xl text-emerald-100/90 font-light leading-relaxed drop-shadow">
+                    Sisli çam zirvelerinden kadim ormanların derinliklerine, kristal göllerin dinginliğinden gece göğünün zümrüt ışıklarına uzanan eşsiz ekosistemleri keşfedin.
+                </p>
+
+                <div class="pt-1 flex flex-wrap items-center justify-center gap-3.5">
+                    <a href="#ekosistemler" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-sm sm:text-base shadow-xl shadow-amber-500/20 transition-all hover:scale-[1.02]">
+                        <span>Ekosistemleri Keşfet</span>
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- İnteraktif Günün Saati Kontrol Paneli (Hero Alt Kısmı) -->
+            <div id="atmosfer" class="relative z-20 max-w-5xl w-full mx-auto px-4 sm:px-8 pt-6">
+                <div class="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 shadow-2xl">
+                    <div class="text-center md:text-left space-y-1">
+                        <div class="flex items-center justify-center md:justify-start gap-2.5">
+                            <span id="sceneTimeBadge" class="text-xs font-bold uppercase tracking-widest text-amber-300">05:45 • Şafak Vakti</span>
+                            <span class="text-emerald-500">•</span>
+                            <span id="sceneTemp" class="text-xs text-emerald-200/85 font-medium">9°C • Sabah Sisi</span>
+                        </div>
+                        <p id="sceneDesc" class="text-xs sm:text-sm text-emerald-100/85">
+                            İlk altın ışınlar zirvelerin ardından yükselirken vadi tabanındaki sabah sisi ağır ağır dağılır.
+                        </p>
+                    </div>
+
+                    <div class="inline-flex flex-wrap justify-center gap-1.5 p-1.5 rounded-xl bg-black/35 border border-white/10" role="tablist" aria-label="Günün saati seçici">
+                        <button type="button" data-time="dawn" class="time-btn px-3.5 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer bg-amber-400 text-slate-950 shadow">
+                            Şafak Vakti
+                        </button>
+                        <button type="button" data-time="noon" class="time-btn px-3.5 py-2 rounded-lg text-xs font-medium text-emerald-100 hover:text-amber-200 transition-all cursor-pointer">
+                            Öğle Güneşi
+                        </button>
+                        <button type="button" data-time="sunset" class="time-btn px-3.5 py-2 rounded-lg text-xs font-medium text-emerald-100 hover:text-amber-200 transition-all cursor-pointer">
+                            Gün Batımı
+                        </button>
+                        <button type="button" data-time="night" class="time-btn px-3.5 py-2 rounded-lg text-xs font-medium text-emerald-100 hover:text-amber-200 transition-all cursor-pointer">
+                            Yıldızlı Gece
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EKOSİSTEMLER & DOĞAL HARİKALAR (İNTERAKTİF KARTLAR) -->
+        <section id="ekosistemler" class="relative py-20 sm:py-28 px-4 sm:px-8">
+            <div class="max-w-7xl mx-auto space-y-14">
+                <div class="max-w-3xl mx-auto text-center space-y-4">
+                    <span class="text-xs sm:text-sm uppercase tracking-[0.28em] text-amber-300/90 font-semibold">Yeryüzü Dokuları</span>
+                    <h2 class="font-serif-display text-3xl sm:text-5xl font-semibold text-white">
+                        Ekosistemler &amp; Doğal Harikalar
+                    </h2>
+                    <p class="text-sm sm:text-base text-emerald-200/75 leading-relaxed">
+                        Her biri milyonlarca yıllık evrimin sessiz birer anıtı olan dört büyüleyici yaşam alanına dokunun, biyom detaylarını ve özgün doğa seslerini deneyimleyin.
+                    </p>
+                </div>
+
+                <!-- 4 Ekosistem Kartı -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+
+                    <!-- Kart 1: Kadim Ormanlar -->
+                    <article data-ecosystem="forest" class="ecosystem-card glass-card rounded-3xl overflow-hidden cursor-pointer group flex flex-col">
+                        <div class="relative h-60 sm:h-68 w-full overflow-hidden bg-[#071811]">
+                            <svg viewBox="0 0 600 320" preserveAspectRatio="xMidYMid slice" class="w-full h-full group-hover:scale-105 transition-transform duration-700" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="cardForestBg" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#0b281d"/>
+                                        <stop offset="55%" stop-color="#1b4332"/>
+                                        <stop offset="100%" stop-color="#081c15"/>
+                                    </linearGradient>
+                                    <linearGradient id="forestBeam" x1="20%" y1="0%" x2="70%" y2="100%">
+                                        <stop offset="0%" stop-color="#fef08a" stop-opacity="0.38"/>
+                                        <stop offset="100%" stop-color="#fef08a" stop-opacity="0"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="600" height="320" fill="url(#cardForestBg)"/>
+                                <polygon points="110,0 230,0 410,320 220,320" fill="url(#forestBeam)"/>
+                                <polygon points="290,0 380,0 540,320 410,320" fill="url(#forestBeam)"/>
+                                <rect x="85" y="0" width="16" height="320" fill="#0d2b20" opacity="0.6"/>
+                                <rect x="210" y="0" width="22" height="320" fill="#0d2b20" opacity="0.5"/>
+                                <rect x="375" y="0" width="18" height="320" fill="#0d2b20" opacity="0.55"/>
+                                <rect x="505" y="0" width="24" height="320" fill="#0d2b20" opacity="0.65"/>
+                                <ellipse cx="300" cy="235" rx="340" ry="45" fill="#95d5b2" opacity="0.18"/>
+                                <path d="M0,260 Q180,235 340,265 Q480,245 600,260 L600,320 L0,320 Z" fill="#06140e"/>
+                                <rect x="24" y="0" width="32" height="320" fill="#040d09"/>
+                                <rect x="542" y="0" width="38" height="320" fill="#040d09"/>
+                                <circle cx="240" cy="145" r="2.5" fill="#fde68a" opacity="0.85"/>
+                                <circle cx="315" cy="185" r="2" fill="#fde68a" opacity="0.7"/>
+                                <circle cx="185" cy="200" r="2.2" fill="#a7f3d0" opacity="0.75"/>
+                                <circle cx="420" cy="165" r="2.8" fill="#fde68a" opacity="0.8"/>
+                            </svg>
+                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-emerald-400/25 text-xs font-medium text-emerald-200">
+                                Biyom 01 • Ilıman Yağmur Ormanı
+                            </span>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2.5">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-serif-display text-2xl sm:text-3xl font-semibold text-white group-hover:text-amber-300 transition-colors">Kadim Ormanlar</h3>
+                                    <span class="text-xs font-semibold text-amber-300/90 flex items-center gap-1">
+                                        İncele
+                                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                    </span>
+                                </div>
+                                <p class="text-sm text-emerald-100/75 leading-relaxed">
+                                    Yüzyıllık göknar ve kayın gövdeleri arasından süzülen sabah ışığı, yosun kaplı köklerin altında nefes alan kadim bir ekosistemi besler.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-emerald-800/40 flex items-center justify-between text-xs text-emerald-300/75">
+                                <span>Rakım: 400 – 1.650 m</span>
+                                <span>Oksijen Rezervi: Çok Yüksek</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Kart 2: Alpin Zirveler -->
+                    <article data-ecosystem="peaks" class="ecosystem-card glass-card rounded-3xl overflow-hidden cursor-pointer group flex flex-col">
+                        <div class="relative h-60 sm:h-68 w-full overflow-hidden bg-[#101c24]">
+                            <svg viewBox="0 0 600 320" preserveAspectRatio="xMidYMid slice" class="w-full h-full group-hover:scale-105 transition-transform duration-700" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="cardPeakSky" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#0f2027"/>
+                                        <stop offset="55%" stop-color="#2c5364"/>
+                                        <stop offset="100%" stop-color="#d9a05b"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="600" height="320" fill="url(#cardPeakSky)"/>
+                                <circle cx="465" cy="95" r="34" fill="#fef3c7" opacity="0.8"/>
+                                <polygon points="40,320 210,85 385,320" fill="#1e3540"/>
+                                <polygon points="210,85 162,152 192,144 210,164 232,142 256,154" fill="#f8fafc" opacity="0.9"/>
+                                <polygon points="180,320 375,62 575,320" fill="#13252e"/>
+                                <polygon points="375,62 315,142 348,134 375,156 405,130 435,144" fill="#ffffff"/>
+                                <polygon points="375,62 405,130 435,144" fill="#fde68a" opacity="0.65"/>
+                                <ellipse cx="300" cy="242" rx="340" ry="34" fill="#e2e8f0" opacity="0.22"/>
+                                <path d="M0,265 L145,205 L290,260 L460,215 L600,265 L600,320 L0,320 Z" fill="#09151a"/>
+                            </svg>
+                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-amber-300/25 text-xs font-medium text-amber-200">
+                                Biyom 02 • Yüksek Dağ Kuşağı
+                            </span>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2.5">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-serif-display text-2xl sm:text-3xl font-semibold text-white group-hover:text-amber-300 transition-colors">Alpin Zirveler</h3>
+                                    <span class="text-xs font-semibold text-amber-300/90 flex items-center gap-1">
+                                        İncele
+                                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                    </span>
+                                </div>
+                                <p class="text-sm text-emerald-100/75 leading-relaxed">
+                                    Bulut denizinin üzerinde yükselen granit doruklar, kalıcı buzullar ve sert rüzgârlara direnen endemik alpin çiçekleriyle gökyüzüne dokunur.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-emerald-800/40 flex items-center justify-between text-xs text-emerald-300/75">
+                                <span>Rakım: 2.400 – 4.800 m</span>
+                                <span>İklim: Buzul &amp; Alpin</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Kart 3: Kristal Göller & Şelaleler -->
+                    <article data-ecosystem="lakes" class="ecosystem-card glass-card rounded-3xl overflow-hidden cursor-pointer group flex flex-col">
+                        <div class="relative h-60 sm:h-68 w-full overflow-hidden bg-[#071e22]">
+                            <svg viewBox="0 0 600 320" preserveAspectRatio="xMidYMid slice" class="w-full h-full group-hover:scale-105 transition-transform duration-700" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="cardLakeSky" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#0a2e36"/>
+                                        <stop offset="60%" stop-color="#1d6363"/>
+                                        <stop offset="100%" stop-color="#74c69d"/>
+                                    </linearGradient>
+                                    <linearGradient id="waterFall" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#e0fbfc" stop-opacity="0.95"/>
+                                        <stop offset="100%" stop-color="#98f5e1" stop-opacity="0.65"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="600" height="320" fill="url(#cardLakeSky)"/>
+                                <path d="M0,75 L250,95 L285,215 L0,215 Z" fill="#102a2e"/>
+                                <path d="M335,105 L600,80 L600,215 L320,215 Z" fill="#133338"/>
+                                <rect x="268" y="95" width="54" height="125" fill="url(#waterFall)"/>
+                                <line x1="282" y1="98" x2="282" y2="218" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+                                <line x1="305" y1="102" x2="305" y2="218" stroke="#ffffff" stroke-width="2.5" opacity="0.8"/>
+                                <ellipse cx="295" cy="218" rx="58" ry="14" fill="#ffffff" opacity="0.65"/>
+                                <rect x="0" y="215" width="600" height="105" fill="#0d4f54"/>
+                                <ellipse cx="295" cy="255" rx="180" ry="12" fill="#98f5e1" opacity="0.28"/>
+                                <ellipse cx="295" cy="285" rx="120" ry="8" fill="#e0fbfc" opacity="0.22"/>
+                                <polygon points="30,225 55,140 80,225" fill="#061a1d"/>
+                                <polygon points="510,225 540,130 570,225" fill="#061a1d"/>
+                            </svg>
+                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-teal-300/25 text-xs font-medium text-teal-200">
+                                Biyom 03 • Tatlı Su Havzası
+                            </span>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2.5">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-serif-display text-2xl sm:text-3xl font-semibold text-white group-hover:text-amber-300 transition-colors">Kristal Göller &amp; Şelaleler</h3>
+                                    <span class="text-xs font-semibold text-amber-300/90 flex items-center gap-1">
+                                        İncele
+                                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                    </span>
+                                </div>
+                                <p class="text-sm text-emerald-100/75 leading-relaxed">
+                                    Eriyen kar sularının bazalt kayalıklardan süzülerek oluşturduğu turkuaz buzul gölleri, gökyüzünü kusursuz bir ayna gibi yansıtır.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-emerald-800/40 flex items-center justify-between text-xs text-emerald-300/75">
+                                <span>Berraklık: 35+ Metre</span>
+                                <span>Su Sıcaklığı: 6 – 12 °C</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Kart 4: Kuzey Işıkları -->
+                    <article data-ecosystem="aurora" class="ecosystem-card glass-card rounded-3xl overflow-hidden cursor-pointer group flex flex-col">
+                        <div class="relative h-60 sm:h-68 w-full overflow-hidden bg-[#040a12]">
+                            <svg viewBox="0 0 600 320" preserveAspectRatio="xMidYMid slice" class="w-full h-full group-hover:scale-105 transition-transform duration-700" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="cardAuroraSky" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#020617"/>
+                                        <stop offset="65%" stop-color="#062026"/>
+                                        <stop offset="100%" stop-color="#0b3b36"/>
+                                    </linearGradient>
+                                    <linearGradient id="auroraRibbon" x1="0%" y1="100%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#10b981" stop-opacity="0.15"/>
+                                        <stop offset="45%" stop-color="#34d399" stop-opacity="0.8"/>
+                                        <stop offset="75%" stop-color="#a7f3d0" stop-opacity="0.65"/>
+                                        <stop offset="100%" stop-color="#818cf8" stop-opacity="0.2"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="600" height="320" fill="url(#cardAuroraSky)"/>
+                                <g fill="#ffffff" opacity="0.8">
+                                    <circle cx="75" cy="42" r="1.3"/><circle cx="145" cy="82" r="1"/>
+                                    <circle cx="265" cy="36" r="1.5"/><circle cx="395" cy="54" r="1.2"/>
+                                    <circle cx="515" cy="40" r="1.6"/><circle cx="470" cy="95" r="1"/>
+                                </g>
+                                <path d="M-20,175 Q130,65 280,130 T620,60 L620,150 Q440,210 270,170 T-20,220 Z" fill="url(#auroraRibbon)" class="animate-aurora"/>
+                                <path d="M40,135 Q210,35 370,105 T620,30 L620,95 Q420,155 240,120 T40,175 Z" fill="url(#auroraRibbon)" opacity="0.6"/>
+                                <path d="M0,235 L150,185 L310,230 L475,180 L600,225 L600,320 L0,320 Z" fill="#041014"/>
+                                <polygon points="65,320 90,205 115,320" fill="#02080a"/>
+                                <polygon points="110,320 130,225 150,320" fill="#02080a"/>
+                                <polygon points="480,320 508,195 536,320" fill="#02080a"/>
+                            </svg>
+                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-emerald-300/30 text-xs font-medium text-emerald-200">
+                                Biyom 04 • Subarktik Tayga
+                            </span>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2.5">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-serif-display text-2xl sm:text-3xl font-semibold text-white group-hover:text-amber-300 transition-colors">Kuzey Işıkları</h3>
+                                    <span class="text-xs font-semibold text-amber-300/90 flex items-center gap-1">
+                                        İncele
+                                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                    </span>
+                                </div>
+                                <p class="text-sm text-emerald-100/75 leading-relaxed">
+                                    Kutup gecesinin sessizliğinde güneş rüzgârlarının atmosferle dansı, karla örtülü tayga ormanlarının üzerinde zümrüt perdeler örer.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-emerald-800/40 flex items-center justify-between text-xs text-emerald-300/75">
+                                <span>Enlem: 65° – 72° Kuzey</span>
+                                <span>Atmosfer Olayı: Aurora Borealis</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- DOĞA SANAT GALERİSİ & KEŞİF PANORAMASI -->
+        <section id="galeri" class="relative py-16 sm:py-24 px-4 sm:px-8 bg-gradient-to-b from-[#06110d] via-[#091b14] to-[#06110d]">
+            <div class="max-w-7xl mx-auto space-y-12">
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                    <div class="space-y-2">
+                        <span class="text-xs uppercase tracking-[0.28em] text-amber-300/90 font-semibold">Görsel Seçki</span>
+                        <h2 class="font-serif-display text-3xl sm:text-5xl font-semibold text-white">Yabanın Sessiz Anları</h2>
+                    </div>
+                    <p class="text-xs sm:text-sm text-emerald-200/75 max-w-md">
+                        Işığın, suyun ve mevsimlerin yeryüzüne çizdiği doğal kompozisyonlardan özel bir kesit.
+                    </p>
+                </div>
+
+                <!-- 3'lü Sanat & Manzara Kartı -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Galeri 1: Sisli Çam Vadisi -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="h-64 w-full overflow-hidden relative">
+                            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" class="w-full h-full group-hover:scale-105 transition-transform duration-700" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="gal1Sky" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#1b4332"/>
+                                        <stop offset="100%" stop-color="#95d5b2"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#gal1Sky)"/>
+                                <circle cx="290" cy="85" r="32" fill="#fef3c7" opacity="0.75"/>
+                                <path d="M0,190 L110,120 L230,185 L340,115 L400,155 L400,300 L0,300 Z" fill="#143628"/>
+                                <ellipse cx="200" cy="195" rx="230" ry="28" fill="#d8f3dc" opacity="0.4"/>
+                                <polygon points="40,300 75,150 110,300" fill="#081c15"/>
+                                <polygon points="115,300 145,175 175,300" fill="#06140e"/>
+                                <polygon points="265,300 305,140 345,300" fill="#081c15"/>
+                            </svg>
+                            <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/85 via-black/40 to-transparent">
+                                <span class="text-[11px] uppercase tracking-widest text-amber-300 font-semibold">Kuzey Anadolu</span>
+                                <h3 class="font-serif-display text-xl text-white font-semibold mt-0.5">Sabah Sisi ve Ladinler</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Galeri 2: Kızıl Kanyon Gün Batımı -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="h-64 w-full overflow-hidden relative">
+                            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" class="w-full h-full group-hover:scale-105 transition-transform duration-700" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="gal2Sky" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#311042"/>
+                                        <stop offset="55%" stop-color="#be185d"/>
+                                        <stop offset="100%" stop-color="#f59e0b"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#gal2Sky)"/>
+                                <circle cx="200" cy="175" r="46" fill="#fef08a" opacity="0.9"/>
+                                <path d="M0,155 L95,155 L135,235 L0,235 Z" fill="#4a192c"/>
+                                <path d="M265,235 L305,145 L400,145 L400,235 Z" fill="#3b1222"/>
+                                <rect x="0" y="235" width="400" height="65" fill="#1e0a14"/>
+                                <path d="M175,235 Q200,265 185,300 L225,300 Q215,265 225,235 Z" fill="#fb923c" opacity="0.65"/>
+                            </svg>
+                            <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/85 via-black/40 to-transparent">
+                                <span class="text-[11px] uppercase tracking-widest text-amber-300 font-semibold">Bozkır &amp; Kanyon</span>
+                                <h3 class="font-serif-display text-xl text-white font-semibold mt-0.5">Kehribar Ufuk Çizgisi</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Galeri 3: Ay Işığında Fiyort -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="h-64 w-full overflow-hidden relative">
+                            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" class="w-full h-full group-hover:scale-105 transition-transform duration-700" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="gal3Sky" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#020617"/>
+                                        <stop offset="100%" stop-color="#0f2942"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#gal3Sky)"/>
+                                <circle cx="115" cy="70" r="22" fill="#f8fafc" opacity="0.92"/>
+                                <circle cx="280" cy="52" r="1.4" fill="#ffffff"/><circle cx="330" cy="88" r="1.2" fill="#ffffff"/>
+                                <polygon points="0,210 135,105 260,210" fill="#0b1d30"/>
+                                <polygon points="180,210 315,95 400,175 400,210" fill="#071524"/>
+                                <rect x="0" y="210" width="400" height="90" fill="#040d17"/>
+                                <ellipse cx="115" cy="245" rx="28" ry="6" fill="#e2e8f0" opacity="0.45"/>
+                            </svg>
+                            <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/85 via-black/40 to-transparent">
+                                <span class="text-[11px] uppercase tracking-widest text-amber-300 font-semibold">Kuzey Fiyortları</span>
+                                <h3 class="font-serif-display text-xl text-white font-semibold mt-0.5">Gümüş Ay Yansıması</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEŞFET & KORUMA MANİFESTOSU -->
+        <section id="manifesto" class="relative py-20 sm:py-28 px-4 sm:px-8 border-t border-emerald-900/50">
+            <div class="max-w-6xl mx-auto space-y-16">
+                <!-- 3 Doğa İstatistiği -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="glass-panel rounded-3xl p-7 sm:p-8 text-center space-y-2">
+                        <span class="font-serif-display text-4xl sm:text-5xl font-bold text-amber-300 block">%80</span>
+                        <span class="text-sm font-semibold text-white block">Karasal Biyoçeşitlilik</span>
+                        <p class="text-xs text-emerald-200/70 leading-relaxed">
+                            Yeryüzündeki karasal bitki ve hayvan türlerinin beşte dördü orman ekosistemlerine sığınır.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel rounded-3xl p-7 sm:p-8 text-center space-y-2">
+                        <span class="font-serif-display text-4xl sm:text-5xl font-bold text-emerald-300 block">3 Trilyon</span>
+                        <span class="text-sm font-semibold text-white block">Yaşayan Kadim Ağaç</span>
+                        <p class="text-xs text-emerald-200/70 leading-relaxed">
+                            Gezegenimizin nefes almasını sağlayan ormanlar, her yıl milyarlarca ton karbonu toprağa hapseder.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel rounded-3xl p-7 sm:p-8 text-center space-y-2">
+                        <span class="font-serif-display text-4xl sm:text-5xl font-bold text-amber-300 block">%71</span>
+                        <span class="text-sm font-semibold text-white block">Mavi Gezegen Su Döngüsü</span>
+                        <p class="text-xs text-emerald-200/70 leading-relaxed">
+                            Buzullardan okyanuslara uzanan su döngüsü, tüm canlılığın kesintisiz yaşam kaynağıdır.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Manifesto Kartı -->
+                <div class="glass-card rounded-3xl p-8 sm:p-14 text-center max-w-4xl mx-auto space-y-6">
+                    <div class="w-12 h-12 mx-auto rounded-2xl bg-amber-400/15 border border-amber-300/30 flex items-center justify-center text-amber-300">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                        </svg>
+                    </div>
+
+                    <h3 class="font-serif-display text-2xl sm:text-4xl italic font-medium text-amber-100 leading-snug">
+                        “Doğaya yalnızca bakmak yetmez; onun sessiz ritmini duymak, bıraktığımız her izi sevgiyle tartmak gerekir.”
+                    </h3>
+
+                    <p class="text-sm sm:text-base text-emerald-100/80 max-w-2xl mx-auto leading-relaxed font-light">
+                        YABAN &amp; DOĞA; el değmemiş ekosistemlerin kırılgan dengesini görünür kılmak, kadim ormanların ve berrak su havzalarının yarınlara miras kalması için farkındalık uyandırmak amacıyla tasarlandı.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alt Bilgi (Footer) -->
+        <footer class="py-10 px-4 sm:px-8 border-t border-emerald-950 bg-[#040b08] text-center text-xs sm:text-sm text-emerald-300/65">
+            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2.5">
+                    <span class="font-serif-display font-bold tracking-[0.16em] text-amber-200/90">YABAN &amp; DOĞA</span>
+                    <span>•</span>
+                    <span>Doğanın İzinde Dijital Atlas</span>
+                </div>
+                <p>© 2026 Yaban &amp; Doğa. Tüm hakları doğaya ve geleceğe adanmıştır.</p>
+            </div>
+        </footer>
+
+        <!-- EKOSİSTEM DETAY & ORTAM SESİ MODALI -->
+        <div id="ecosystemModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="glass-card max-w-2xl w-full rounded-3xl overflow-hidden shadow-2xl border border-amber-300/30">
+                <div id="modalVisual" class="h-56 sm:h-64 w-full relative overflow-hidden bg-slate-900"></div>
+                <div class="p-6 sm:p-8 space-y-5">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <span id="modalTag" class="text-xs uppercase tracking-widest text-amber-300 font-semibold">Biyom Detayı</span>
+                            <h3 id="modalTitle" class="font-serif-display text-3xl sm:text-4xl font-semibold text-white mt-1">Başlık</h3>
+                        </div>
+                        <button id="closeModalBtn" type="button" aria-label="Pencereyi kapat" class="p-2 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 border border-emerald-700/50 text-emerald-200 hover:text-amber-300 cursor-pointer transition-colors">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                        </button>
+                    </div>
+
+                    <p id="modalBody" class="text-sm sm:text-base text-emerald-100/85 leading-relaxed"></p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="p-3 rounded-2xl bg-emerald-950/70 border border-emerald-800/40">
+                            <span class="text-[11px] text-emerald-300/70 block">Baskın Flora</span>
+                            <span id="modalFlora" class="text-xs sm:text-sm font-semibold text-white mt-0.5 block">-</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-emerald-950/70 border border-emerald-800/40">
+                            <span class="text-[11px] text-emerald-300/70 block">Simge Türler</span>
+                            <span id="modalFauna" class="text-xs sm:text-sm font-semibold text-white mt-0.5 block">-</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-emerald-950/70 border border-emerald-800/40 col-span-2 sm:col-span-1">
+                            <span class="text-[11px] text-emerald-300/70 block">En İyi Gözlem</span>
+                            <span id="modalSeason" class="text-xs sm:text-sm font-semibold text-amber-300 mt-0.5 block">-</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex items-center justify-between border-t border-emerald-800/40">
+                        <span id="modalAmbianceText" class="text-xs text-emerald-200/80">Biyom Akustiği: Hazır</span>
+                        <button id="modalSoundBtn" type="button" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400/20 hover:bg-amber-400/30 border border-amber-300/40 text-xs font-semibold text-amber-200 cursor-pointer transition-colors">
+                            <span>Biyom Sesini Dinle</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =====================================================================
+         UYGULAMA MANTIĞI: BEKLEME ODASI SAYACI, EKRAN GEÇİŞİ, CANVAS & AUDIO
+         ===================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            /* -----------------------------------------------------------
+               1. BEKLEME ODASI 15 SANİYELİK GERİ SAYIM & EKRAN GEÇİŞİ
+            ----------------------------------------------------------- */
+            const waitingRoomView = document.getElementById('waitingRoomView');
+            const natureSiteView = document.getElementById('natureSiteView');
+
+            const countdownEl = document.getElementById('countdown');
+            const badgeTimerEl = document.getElementById('badgeTimer');
+            const timerBoxEl = document.getElementById('timerBox');
+            const resetBtn = document.getElementById('resetBtn');
+            const joinBtn = document.getElementById('joinBtn');
+            const backToWaitingBtn = document.getElementById('backToWaitingBtn');
+
+            const mainTitle = document.getElementById('mainTitle');
+            const subTitle = document.getElementById('subTitle');
+            const joinAction = document.getElementById('joinAction');
+
+            const INITIAL_SECONDS = 15;
+            let totalSeconds = INITIAL_SECONDS;
+            let timerInterval = null;
+            let canvasInitialized = false;
+
+            function formatTime(secs) {
+                const minutes = Math.floor(secs / 60);
+                const seconds = secs % 60;
+                return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
+
+            function updateDisplay() {
+                const formatted = formatTime(totalSeconds);
+                countdownEl.textContent = formatted;
+                badgeTimerEl.textContent = formatted;
+            }
+
+            function startWaitingTimer() {
+                if (timerInterval) clearInterval(timerInterval);
+
+                mainTitle.textContent = 'Çevrimiçi toplantınız 5dk içinde başlayacaktır, lütfen kendinize bir kahve alın ve keyfinize bakın';
+                subTitle.textContent = 'Toplantı odası hazırlanıyor. Süre tamamlandığında oturuma giriş aktifleşecektir.';
+                joinAction.classList.add('hidden');
+                timerBoxEl.classList.remove('hidden');
+
+                badgeTimerEl.classList.remove('text-emerald-600');
+                badgeTimerEl.classList.add('text-amber-700');
+
+                timerInterval = setInterval(() => {
+                    if (totalSeconds > 0) {
+                        totalSeconds--;
+                        updateDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        countdownEl.textContent = '00:00';
+                        badgeTimerEl.textContent = '00:00 • Başladı';
+                        badgeTimerEl.classList.remove('text-amber-700');
+                        badgeTimerEl.classList.add('text-emerald-600');
+
+                        timerBoxEl.classList.add('hidden');
+                        mainTitle.textContent = 'Toplantınız başladı!';
+                        subTitle.textContent = 'Kahveniz hazırsa aşağıdaki butona tıklayarak oturuma hemen katılabilirsiniz.';
+                        joinAction.classList.remove('hidden');
+                    }
+                }, 1000);
+            }
+
+            resetBtn.addEventListener('click', () => {
+                totalSeconds = INITIAL_SECONDS;
+                updateDisplay();
+                startWaitingTimer();
+            });
+
+            // "Toplantıya Katıl" Butonu -> Yaban & Doğa Ekranına Geçiş
+            joinBtn.addEventListener('click', () => {
+                waitingRoomView.classList.add('hidden');
+                natureSiteView.classList.remove('hidden');
+                natureSiteView.classList.add('view-fade-enter');
+                document.body.classList.remove('bg-[#f1f5f9]', 'text-slate-800');
+                document.body.classList.add('bg-[#06110d]', 'text-[#e8efe9]');
+                window.scrollTo({ top: 0, behavior: 'instant' });
+
+                if (!canvasInitialized) {
+                    initParticles();
+                    animateParticles();
+                    canvasInitialized = true;
+                } else {
+                    resizeCanvas();
+                }
+            });
+
+            // "Bekleme Odasına Dön" Butonu -> Tekrar Bekleme Odasına Geçiş
+            backToWaitingBtn.addEventListener('click', () => {
+                natureSiteView.classList.add('hidden');
+                waitingRoomView.classList.remove('hidden');
+                waitingRoomView.classList.add('view-fade-enter');
+                document.body.classList.remove('bg-[#06110d]', 'text-[#e8efe9]');
+                document.body.classList.add('bg-[#f1f5f9]', 'text-slate-800');
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            });
+
+            updateDisplay();
+            startWaitingTimer();
+
+            /* -----------------------------------------------------------
+               2. YABAN & DOĞA: MOBİL MENÜ & KAHRAMAN CANVAS PARÇACIKLARI
+            ----------------------------------------------------------- */
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            const canvas = document.getElementById('heroCanvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let width = 0;
+            let height = 0;
+
+            function resizeCanvas() {
+                if (!canvas) return;
+                width = canvas.width = canvas.offsetWidth || window.innerWidth;
+                height = canvas.height = canvas.offsetHeight || window.innerHeight;
+            }
+
+            class Firefly {
+                constructor() {
+                    this.reset(true);
+                }
+                reset(initial = false) {
+                    this.x = Math.random() * width;
+                    this.y = initial ? Math.random() * height : height + 15;
+                    this.radius = Math.random() * 2.2 + 0.9;
+                    this.vx = (Math.random() - 0.5) * 0.45;
+                    this.vy = -(Math.random() * 0.35 + 0.12);
+                    this.alpha = Math.random() * 0.72 + 0.22;
+                    this.pulseSpeed = Math.random() * 0.025 + 0.01;
+                    this.phase = Math.random() * Math.PI * 2;
+                    this.isGold = Math.random() > 0.35;
+                }
+                update() {
+                    this.phase += this.pulseSpeed;
+                    this.x += this.vx + Math.sin(this.phase * 0.6) * 0.25;
+                    this.y += this.vy;
+
+                    if (this.y < -20 || this.x < -20 || this.x > width + 20) {
+                        this.reset(false);
+                    }
+                }
+                draw() {
+                    const currentAlpha = Math.max(0.08, this.alpha * (0.55 + 0.45 * Math.sin(this.phase)));
+                    ctx.save();
+                    ctx.beginPath();
+                    const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 5);
+                    if (this.isGold) {
+                        grad.addColorStop(0, `rgba(254, 243, 199, ${currentAlpha})`);
+                        grad.addColorStop(0.4, `rgba(245, 158, 11, ${currentAlpha * 0.55})`);
+                        grad.addColorStop(1, 'rgba(245, 158, 11, 0)');
+                    } else {
+                        grad.addColorStop(0, `rgba(209, 250, 229, ${currentAlpha})`);
+                        grad.addColorStop(0.4, `rgba(52, 211, 153, ${currentAlpha * 0.5})`);
+                        grad.addColorStop(1, 'rgba(52, 211, 153, 0)');
+                    }
+                    ctx.fillStyle = grad;
+                    ctx.arc(this.x, this.y, this.radius * 5, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+
+            function initParticles() {
+                resizeCanvas();
+                const count = Math.min(80, Math.max(30, Math.floor((width * height) / 18000)));
+                particles = Array.from({ length: count }, () => new Firefly());
+            }
+
+            function animateParticles() {
+                if (!natureSiteView.classList.contains('hidden')) {
+                    ctx.clearRect(0, 0, width, height);
+                    for (const p of particles) {
+                        p.update();
+                        p.draw();
+                    }
+                }
+                requestAnimationFrame(animateParticles);
+            }
+
+            window.addEventListener('resize', () => {
+                if (canvasInitialized) initParticles();
+            });
+
+            /* -----------------------------------------------------------
+               3. İNTERAKTİF GÜNÜN SAATİ DEĞİŞTİRİCİ (HERO SAHNESİ)
+            ----------------------------------------------------------- */
+            const timePresets = {
+                dawn: {
+                    sky: ['#040d0a', '#1b4332', '#c98a4b'],
+                    lake: ['#12382b', '#05140e'],
+                    farMount: '#183a2d',
+                    midMount: '#102920',
+                    trees: '#050e0a',
+                    mistOpacity: '0.45',
+                    starsOpacity: '0.35',
+                    raysOpacity: '0.38',
+                    celestialPos: 'translate(800, 540)',
+                    discColor: '#fef3c7',
+                    haloColor: '#fde68a',
+                    haloOpacity: '0.34',
+                    reflColor: '#fde68a',
+                    reflOpacity: '0.38',
+                    badge: '05:45 • Şafak Vakti',
+                    temp: '9°C • Sabah Sisi',
+                    desc: 'İlk altın ışınlar zirvelerin ardından yükselirken vadi tabanındaki sabah sisi ağır ağır dağılır.'
+                },
+                noon: {
+                    sky: ['#0369a1', '#38bdf8', '#bae6fd'],
+                    lake: ['#0e7490', '#064e3b'],
+                    farMount: '#2b5876',
+                    midMount: '#1b4332',
+                    trees: '#081c15',
+                    mistOpacity: '0.12',
+                    starsOpacity: '0',
+                    raysOpacity: '0.22',
+                    celestialPos: 'translate(1150, 175)',
+                    discColor: '#ffffff',
+                    haloColor: '#fef08a',
+                    haloOpacity: '0.42',
+                    reflColor: '#e0f2fe',
+                    reflOpacity: '0.45',
+                    badge: '13:15 • Öğle Güneşi',
+                    temp: '22°C • Berrak Gökyüzü',
+                    desc: 'Güneş en yüksek noktasındayken çam iğneleri zümrüt yeşiline parlar; kristal göl suları gökyüzünü ayna gibi yansıtır.'
+                },
+                sunset: {
+                    sky: ['#1e1b4b', '#9d174d', '#f59e0b'],
+                    lake: ['#581c87', '#1e1b4b'],
+                    farMount: '#311042',
+                    midMount: '#1f1135',
+                    trees: '#090714',
+                    mistOpacity: '0.32',
+                    starsOpacity: '0.4',
+                    raysOpacity: '0.3',
+                    celestialPos: 'translate(460, 545)',
+                    discColor: '#fb923c',
+                    haloColor: '#f43f5e',
+                    haloOpacity: '0.42',
+                    reflColor: '#fb923c',
+                    reflOpacity: '0.52',
+                    badge: '19:40 • Gün Batımı',
+                    temp: '15°C • Kızıl Ufuk',
+                    desc: 'Ufuk çizgisi kehribar ve kızıl tonlara bürünürken dağ sırtları mor gölgelere gömülür; vadi akşam dinginliğine hazırlanır.'
+                },
+                night: {
+                    sky: ['#020617', '#061826', '#0b2e26'],
+                    lake: ['#04141c', '#030d12'],
+                    farMount: '#0b192c',
+                    midMount: '#06111c',
+                    trees: '#02070a',
+                    mistOpacity: '0.24',
+                    starsOpacity: '0.95',
+                    raysOpacity: '0.06',
+                    celestialPos: 'translate(1120, 190)',
+                    discColor: '#f8fafc',
+                    haloColor: '#93c5fd',
+                    haloOpacity: '0.25',
+                    reflColor: '#e2e8f0',
+                    reflOpacity: '0.3',
+                    badge: '00:30 • Yıldızlı Gece',
+                    temp: '6°C • Samanyolu Berraklığı',
+                    desc: 'Ay ışığı göl yüzeyinde gümüş bir patika çizerken binlerce yıldız gökyüzünde tüm görkemiyle belirir.'
+                }
+            };
+
+            const timeBtns = document.querySelectorAll('.time-btn');
+            const hSky1 = document.getElementById('hSky1');
+            const hSky2 = document.getElementById('hSky2');
+            const hSky3 = document.getElementById('hSky3');
+            const hLake1 = document.getElementById('hLake1');
+            const hLake2 = document.getElementById('hLake2');
+            const hFarMount = document.getElementById('hFarMount');
+            const hMidMount = document.getElementById('hMidMount');
+            const hTrees = document.getElementById('hTrees');
+            const hMist1 = document.getElementById('hMist1');
+            const hMist2 = document.getElementById('hMist2');
+            const hStars = document.getElementById('hStars');
+            const hRays = document.getElementById('hRays');
+            const hCelestial = document.getElementById('hCelestial');
+            const hDisc = document.getElementById('hDisc');
+            const hHalo = document.getElementById('hHalo');
+            const hWaterRefl = document.getElementById('hWaterRefl');
+            const sceneTimeBadge = document.getElementById('sceneTimeBadge');
+            const sceneTemp = document.getElementById('sceneTemp');
+            const sceneDesc = document.getElementById('sceneDesc');
+
+            timeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const mode = btn.getAttribute('data-time');
+                    const cfg = timePresets[mode];
+
+                    timeBtns.forEach(b => {
+                        b.classList.remove('bg-amber-400', 'text-slate-950', 'font-bold', 'shadow');
+                        b.classList.add('text-emerald-100', 'font-medium');
+                    });
+                    btn.classList.add('bg-amber-400', 'text-slate-950', 'font-bold', 'shadow');
+                    btn.classList.remove('text-emerald-100', 'font-medium');
+
+                    hSky1.setAttribute('stop-color', cfg.sky[0]);
+                    hSky2.setAttribute('stop-color', cfg.sky[1]);
+                    hSky3.setAttribute('stop-color', cfg.sky[2]);
+
+                    hLake1.setAttribute('stop-color', cfg.lake[0]);
+                    hLake2.setAttribute('stop-color', cfg.lake[1]);
+
+                    hFarMount.setAttribute('fill', cfg.farMount);
+                    hMidMount.setAttribute('fill', cfg.midMount);
+                    hTrees.setAttribute('fill', cfg.trees);
+
+                    hMist1.setAttribute('opacity', cfg.mistOpacity);
+                    hMist2.setAttribute('opacity', cfg.mistOpacity);
+                    hStars.setAttribute('opacity', cfg.starsOpacity);
+                    hRays.setAttribute('opacity', cfg.raysOpacity);
+
+                    hCelestial.setAttribute('transform', cfg.celestialPos);
+                    hDisc.setAttribute('fill', cfg.discColor);
+                    hHalo.setAttribute('fill', cfg.haloColor);
+                    hHalo.setAttribute('opacity', cfg.haloOpacity);
+
+                    hWaterRefl.setAttribute('fill', cfg.reflColor);
+                    hWaterRefl.setAttribute('opacity', cfg.reflOpacity);
+
+                    sceneTimeBadge.textContent = cfg.badge;
+                    sceneTemp.textContent = cfg.temp;
+                    sceneDesc.textContent = cfg.desc;
+                });
+            });
+
+            /* -----------------------------------------------------------
+               4. EKOSİSTEM DETAY MODALI & AKUSTİK ÖNİZLEME
+            ----------------------------------------------------------- */
+            const ecosystemData = {
+                forest: {
+                    tag: 'Biyom 01 • Ilıman Yağmur Ormanı',
+                    title: 'Kadim Ormanlar',
+                    body: 'Yüzyıllardır balta girmemiş bu derin vadilerde ağaçlar yalnızca tekil canlılar değil, kök ağlarıyla birbirine bilgi ve besin aktaran dev bir topluluktur. Gölgelik tabakadan süzülen altın ışık, yüzlerce eğrelti otu, liken ve mantar türüne hayat verir.',
+                    flora: 'Doğu Kayını, Uludağ Göknarı',
+                    fauna: 'Boz Ayı, Kızıl Geyik, Puhu',
+                    season: 'İlkbahar & Sonbahar',
+                    ambiance: 'Biyom Akustiği: Yaprak Hışırtısı & Sabah Kuşları'
+                },
+                peaks: {
+                    tag: 'Biyom 02 • Yüksek Dağ Kuşağı',
+                    title: 'Alpin Zirveler',
+                    body: 'Ağaç sınırının bittiği noktada başlayan alpin çayırlar ve sarp granit kayalıklar, yeryüzünün en dayanıklı yaşam formlarına ev sahipliği yapar. Kar sularının beslediği yüksek yaylalar, bulut denizinin üzerinde eşsiz bir sessizlik sunar.',
+                    flora: 'Alpin Çiğdemi, Kaya Yosunu',
+                    fauna: 'Dağ Keçisi, Kaya Kartalı',
+                    season: 'Temmuz – Eylül',
+                    ambiance: 'Biyom Akustiği: Yüksek İrtifa Rüzgârı'
+                },
+                lakes: {
+                    tag: 'Biyom 03 • Tatlı Su Havzası',
+                    title: 'Kristal Göller & Şelaleler',
+                    body: 'Buzul vadilerinin çanaklarında biriken mineral zengini berrak sular, gün ışığının açısına göre zümrüt yeşilinden derin turkuaza dönüşür. Çağlayan şelaleler çevresindeki mikro iklimi nemlendirerek nadir sucul bitkilere sığınak olur.',
+                    flora: 'Su Nilüferi, Dere Eğreltisi',
+                    fauna: 'Kırmızı Benekli Alabalık, Su Samuru',
+                    season: 'Mayıs – Ekim',
+                    ambiance: 'Biyom Akustiği: Çağlayan Şelale & Dere Suyu'
+                },
+                aurora: {
+                    tag: 'Biyom 04 • Subarktik Tayga',
+                    title: 'Kuzey Işıkları',
+                    body: 'Kuzey yarımkürenin karla örtülü iğne yapraklı tayga kuşağında, uzun kış geceleri güneşten gelen yüklü parçacıkların atmosferdeki oksijen ve azot atomlarıyla buluşmasıyla zümrüt ve menekşe tonlarında büyülü bir ışık dansına sahne olur.',
+                    flora: 'Sibirya Ladinleri, Kutup Likeni',
+                    fauna: 'Kutup Tilkisi, Ren Geyiği, Kar Baykuşu',
+                    season: 'Eylül – Mart',
+                    ambiance: 'Biyom Akustiği: Kutup Gecesi Esintisi'
+                }
+            };
+
+            const modal = document.getElementById('ecosystemModal');
+            const modalVisual = document.getElementById('modalVisual');
+            const modalTag = document.getElementById('modalTag');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const modalFlora = document.getElementById('modalFlora');
+            const modalFauna = document.getElementById('modalFauna');
+            const modalSeason = document.getElementById('modalSeason');
+            const modalAmbianceText = document.getElementById('modalAmbianceText');
+            const modalSoundBtn = document.getElementById('modalSoundBtn');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+
+            document.querySelectorAll('.ecosystem-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const key = card.getAttribute('data-ecosystem');
+                    const data = ecosystemData[key];
+                    const svgClone = card.querySelector('svg').cloneNode(true);
+
+                    modalVisual.innerHTML = '';
+                    modalVisual.appendChild(svgClone);
+
+                    modalTag.textContent = data.tag;
+                    modalTitle.textContent = data.title;
+                    modalBody.textContent = data.body;
+                    modalFlora.textContent = data.flora;
+                    modalFauna.textContent = data.fauna;
+                    modalSeason.textContent = data.season;
+                    modalAmbianceText.textContent = data.ambiance;
+
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                });
+            });
+
+            function closeModal() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+            });
+
+            /* -----------------------------------------------------------
+               5. WEB AUDIO API DOĞAL ORMAN RÜZGÂRI & KUŞ CIVILTISI SENTEZİ
+            ----------------------------------------------------------- */
+            const audioToggleBtn = document.getElementById('audioToggleBtn');
+            const audioEq = document.getElementById('audioEq');
+
+            let audioCtx = null;
+            let masterGain = null;
+            let birdInterval = null;
+            let isAudioPlaying = false;
+
+            function createForestSoundscape() {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContextClass();
+
+                masterGain = audioCtx.createGain();
+                masterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+                masterGain.gain.exponentialRampToValueAtTime(0.28, audioCtx.currentTime + 1.4);
+                masterGain.connect(audioCtx.destination);
+
+                // Pembe gürültü (yaprak hışırtısı ve hafif esinti tabanı)
+                const bufferSize = 2 * audioCtx.sampleRate;
+                const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const output = noiseBuffer.getChannelData(0);
+                let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+
+                for (let i = 0; i < bufferSize; i++) {
+                    const white = Math.random() * 2 - 1;
+                    b0 = 0.99886 * b0 + white * 0.0555179;
+                    b1 = 0.99332 * b1 + white * 0.0750759;
+                    b2 = 0.96900 * b2 + white * 0.1538520;
+                    b3 = 0.86650 * b3 + white * 0.3104856;
+                    b4 = 0.55000 * b4 + white * 0.5329522;
+                    b5 = -0.7616 * b5 - white * 0.0168980;
+                    output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.04;
+                    b6 = white * 0.115926;
+                }
+
+                const windSource = audioCtx.createBufferSource();
+                windSource.buffer = noiseBuffer;
+                windSource.loop = true;
+
+                const windFilter = audioCtx.createBiquadFilter();
+                windFilter.type = 'lowpass';
+                windFilter.frequency.value = 340;
+
+                const lfo = audioCtx.createOscillator();
+                lfo.frequency.value = 0.12;
+                const lfoGain = audioCtx.createGain();
+                lfoGain.gain.value = 140;
+
+                lfo.connect(lfoGain);
+                lfoGain.connect(windFilter.frequency);
+
+                windSource.connect(windFilter);
+                windFilter.connect(masterGain);
+
+                windSource.start();
+                lfo.start();
+
+                birdInterval = setInterval(() => {
+                    if (!isAudioPlaying || !audioCtx) return;
+                    triggerBirdChirp();
+                }, 4200);
+            }
+
+            function triggerBirdChirp() {
+                if (!audioCtx || audioCtx.state !== 'running') return;
+                const now = audioCtx.currentTime;
+                const notes = Math.random() > 0.4 ? [2200, 2750, 2450] : [1950, 2500];
+
+                notes.forEach((freq, idx) => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    const start = now + idx * 0.14;
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, start);
+                    osc.frequency.exponentialRampToValueAtTime(freq * 1.22, start + 0.06);
+                    osc.frequency.exponentialRampToValueAtTime(freq * 0.92, start + 0.12);
+
+                    gain.gain.setValueAtTime(0.0001, start);
+                    gain.gain.exponentialRampToValueAtTime(0.035, start + 0.03);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.13);
+
+                    osc.connect(gain);
+                    gain.connect(masterGain);
+
+                    osc.start(start);
+                    osc.stop(start + 0.14);
+                });
+            }
+
+            async function enableAmbientAudio() {
+                if (!audioCtx) {
+                    createForestSoundscape();
+                } else if (audioCtx.state === 'suspended') {
+                    await audioCtx.resume();
+                }
+                masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+                masterGain.gain.setValueAtTime(Math.max(0.001, masterGain.gain.value), audioCtx.currentTime);
+                masterGain.gain.exponentialRampToValueAtTime(0.28, audioCtx.currentTime + 1.0);
+
+                isAudioPlaying = true;
+                audioEq.classList.add('audio-active');
+                audioToggleBtn.classList.add('border-amber-300/60', 'bg-emerald-900');
+                triggerBirdChirp();
+            }
+
+            function disableAmbientAudio() {
+                if (audioCtx && masterGain) {
+                    masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+                    masterGain.gain.setValueAtTime(Math.max(0.001, masterGain.gain.value), audioCtx.currentTime);
+                    masterGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.6);
+                }
+                isAudioPlaying = false;
+                audioEq.classList.remove('audio-active');
+                audioToggleBtn.classList.remove('border-amber-300/60', 'bg-emerald-900');
+            }
+
+            audioToggleBtn.addEventListener('click', async () => {
+                if (!isAudioPlaying) {
+                    await enableAmbientAudio();
+                } else {
+                    disableAmbientAudio();
+                }
+            });
+
+            modalSoundBtn.addEventListener('click', async () => {
+                await enableAmbientAudio();
+                modalSoundBtn.textContent = 'Biyom Sesi Çalıyor...';
+            });
+        });
+    </script>
+</body>
+</html>
